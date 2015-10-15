@@ -17,6 +17,6 @@ We decided to use features rather than templates, as comparisons using templates
 
 ###References:
 
-1. Yale Face Database ![http://vision.ucsd.edu/content/yale-face-database](http://vision.ucsd.edu/content/yale-face-database)
-2. Face Recognition: ![Features Versus Templates, http://www.researchgate.net/profile/Tomaso_Poggio/publication/3192217_Face_recognition_features_versus_templates/links/09e4150e6e9231f489000000.pdf](Features Versus Templates, http://www.researchgate.net/profile/Tomaso_Poggio/publication/3192217_Face_recognition_features_versus_templates/links/09e4150e6e9231f489000000.pdf)
+1. Yale Face Database [http://vision.ucsd.edu/content/yale-face-database](http://vision.ucsd.edu/content/yale-face-database)
+2. Face Recognition: [Features Versus Templates, http://www.researchgate.net/profile/Tomaso_Poggio/publication/3192217_Face_recognition_features_versus_templates/links/09e4150e6e9231f489000000.pdf](Features Versus Templates, http://www.researchgate.net/profile/Tomaso_Poggio/publication/3192217_Face_recognition_features_versus_templates/links/09e4150e6e9231f489000000.pdf)
 3. OpenCV, Open-source Computer Vision, [http://opencv.org/](http://opencv.org/)
