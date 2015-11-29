@@ -1,1 +1,11 @@
 *.DS_Store
+*.zip
+code/yalefaces*
+*.jpg
+*.png
+*.jpeg
+*.gif
+.idea/*
+/code/bg/*
+/code/negDir*
+*.tar
