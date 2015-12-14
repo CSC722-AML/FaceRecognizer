@@ -37,8 +37,8 @@ def get_train_data(path):
             for (x_coord, y_coord, width, height) in faces:
                 images.append(image[y_coord:y_coord + height, x_coord:x_coord + width])
                 classes.append(clazz)
-                # cv2.imshow("Adding faces to traning set...", image[y_coord:y_coord+height, x_coord:x_coord+width])
-                # cv2.waitKey(50)
+                #cv2.imshow("Adding faces to traning set...", image[y_coord:y_coord+height, x_coord:x_coord+width])
+                #cv2.waitKey(50)
     return images, classes
 
 ims, cls = get_train_data(folder)
@@ -95,9 +95,13 @@ class Recognizer:
             pred, conf = self.recognizer.predict(img)
             if pred == clazz:
                 # print("%d is Identified with confidence %f"%(clazz, conf))
+                cv2.imshow("Classified Right", img)
+                cv2.waitKey(200)
                 correct += 1
             else:
                 # print("%d is InCorrectly Recognized as %d"%(clazz, pred))
+                cv2.imshow("Classified Wrong", img)
+                cv2.waitKey(200)
                 pass
         return correct, total
 
@@ -120,15 +124,35 @@ class Fisher_Recognizer(Recognizer):
         self.recognizer = cv2.createFisherFaceRecognizer()
 
 
+def test_lbph():
+    model = LBPH_Recognizer()
+    model.train()
+    correct, total = model.test()
+    print("LBPH: %d out of %d classified right."%(correct, total))
+
+
+def test_eigen():
+    model = Eigen_Recognizer()
+    model.train()
+    correct, total = model.test()
+    print("Eigen: %d out of %d classified right."%(correct, total))
+
+def test_fisher():
+    model = Fisher_Recognizer()
+    model.train()
+    correct, total = model.test()
+    print("Fisher: %d out of %d classified right."%(correct, total))
+
+
 def test():
     lbfs, eigens, fishers = [], [], []
-    for i in range(2):
+    for i in range(1):
         print(i)
         model = LBPH_Recognizer()
         model.train()
         correct, total = model.test()
         lbfs.append(correct * 100 / total)
-        print("LBPH", correct, total)
+        print("LBPH: %d out of %d classified right."%(correct, total))
 
         model = Eigen_Recognizer()
         model.train()
@@ -147,4 +171,13 @@ def test():
     print("Fisher", np.mean(fishers), np.std(fishers))
 
 
-test()
+if __name__ == "__main__":
+    args = sys.argv
+    cv2.imshow("Classified Right",np.array([[0,0], [0,0]]))
+    cv2.imshow("Classified Wrong",np.array([[0,0], [0,0]]))
+    if args[1] == "lbph":
+        test_lbph()
+    elif args[1] == "eigen":
+        test_eigen()
+    elif args[1] == "fisher":
+        test_fisher()
